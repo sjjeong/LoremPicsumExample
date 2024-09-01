@@ -1,6 +1,8 @@
 package com.dino.lorempicsumexample.feature.photo_list
 
+import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import androidx.paging.map
 import com.dino.lorempicsumexample.base.BaseViewModel
 import com.dino.lorempicsumexample.data.repository.PicsumRepository
@@ -16,6 +18,7 @@ class PhotoListViewModel @Inject constructor(
     private val picsumRepository: PicsumRepository,
 ) : BaseViewModel() {
     val items: Flow<PagingData<PhotoModel>> = picsumRepository.getPhotosPaging()
+        .cachedIn(viewModelScope)
         .map { pagingData ->
             pagingData.map {
                 it.toUiModel()

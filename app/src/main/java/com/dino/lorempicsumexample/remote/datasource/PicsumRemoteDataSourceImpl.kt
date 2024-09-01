@@ -11,10 +11,12 @@ import javax.inject.Inject
 class PicsumRemoteDataSourceImpl @Inject constructor(
     private val picsumApi: PicsumApi,
 ) : PicsumRemoteDataSource {
-    override suspend fun getPhotos(page: Int, limit: Int): List<PicsumPhotoDto> {
+    override suspend fun getPhotos(page: Int, limit: Int): Pair<List<PicsumPhotoDto>, Boolean> {
         return withContext(Dispatchers.IO) {
-            picsumApi.getPhotos(page = page, limit = limit)
-                .map { it.toDto() }
+            val response = picsumApi.getPhotos(page = page, limit = limit)
+            val hasNext = response.headers()["link"]?.contains("next") ?: false
+            val items = (response.body() ?: emptyList()).map { it.toDto() }
+            items to hasNext
         }
     }
 }

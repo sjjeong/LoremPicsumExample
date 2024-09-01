@@ -21,8 +21,12 @@ class PicsumRepositoryImpl @Inject constructor(
             ),
             pagingSourceFactory = {
                 object : PagingSource<Int, PicsumPhotoDto>() {
+
                     override fun getRefreshKey(state: PagingState<Int, PicsumPhotoDto>): Int? {
-                        TODO("Not yet implemented")
+                        return state.anchorPosition?.let { anchorPosition ->
+                            val anchorPage = state.closestPageToPosition(anchorPosition)
+                            anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
+                        }
                     }
 
                     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, PicsumPhotoDto> {
@@ -34,9 +38,16 @@ class PicsumRepositoryImpl @Inject constructor(
                             )
 
                             LoadResult.Page(
-                                data = response,
-                                prevKey = if (currentPage == 0) null else currentPage - 1,
-                                nextKey = if (response.isEmpty()) null else currentPage + 1
+                                data = response.first,
+                                prevKey = null,
+                                nextKey = if (response.second) {
+                                    if (currentPage == 0) {
+                                        // PagingConfig 의 pageSize*3 로직에 따라 최초 로딩 이후 로딩은 3으로 시작
+                                        3
+                                    } else {
+                                        currentPage + 1
+                                    }
+                                } else null
                             )
                         }.getOrElse {
                             LoadResult.Error(it)

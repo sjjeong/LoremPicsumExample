@@ -1,4 +1,4 @@
-package com.dino.lorempicsumexample.feature.photo_list.compose
+package com.dino.feature.photo_list.compose
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,8 +19,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.dino.lorempicsumexample.feature.photo_list.PhotoListViewModel
-import com.dino.lorempicsumexample.feature.photo_list.model.PhotoModel
+import com.dino.feature.photo_list.PhotoListViewModel
+import com.dino.feature.photo_list.model.PhotoModel
 
 @Composable
 fun PhotoListScreen(

@@ -3,7 +3,7 @@ package com.dino.lorempicsumexample
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.dino.lorempicsumexample.feature.photo_list.PhotoListActivity
+import com.dino.feature.photo_list.PhotoListActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

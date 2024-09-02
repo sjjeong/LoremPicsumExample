@@ -1,8 +1,8 @@
-package com.dino.lorempicsumexample.feature.photo_list
+package com.dino.feature.photo_list
 
 import androidx.compose.runtime.Composable
 import com.dino.core.ui.base.BaseComposeActivity
-import com.dino.lorempicsumexample.feature.photo_list.compose.PhotoListScreen
+import com.dino.feature.photo_list.compose.PhotoListScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

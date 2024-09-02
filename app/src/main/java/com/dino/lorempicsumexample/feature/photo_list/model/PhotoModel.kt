@@ -1,7 +1,5 @@
 package com.dino.lorempicsumexample.feature.photo_list.model
 
-import com.dino.lorempicsumexample.data.model.PicsumPhotoDto
-
 data class PhotoModel(
     val id: String,
     val author: String,
@@ -11,7 +9,7 @@ data class PhotoModel(
     val imageUrl: String,
 )
 
-fun PicsumPhotoDto.toUiModel(): PhotoModel {
+fun com.dino.core.data.model.PicsumPhotoDto.toUiModel(): PhotoModel {
     return PhotoModel(
         id = id,
         author = author,

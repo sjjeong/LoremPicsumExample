@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "LoremPicsumExample"
 include(":app")
+include(":core:data")
+include(":core:remote")

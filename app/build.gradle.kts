@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.kotlin.android.ksp)
 }
@@ -50,6 +49,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:data"))
+    implementation(project(":core:remote"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -61,12 +62,6 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)
-
-    implementation(libs.okhttp)
-    implementation(libs.okhttp.logging.interceptor)
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.converter.kotlinx.serialization)
-    implementation(libs.kotlin.serialization)
 
     implementation(libs.paging.runtime)
     implementation(libs.paging.compose)

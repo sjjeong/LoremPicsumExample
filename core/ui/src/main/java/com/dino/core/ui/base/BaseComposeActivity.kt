@@ -1,7 +1,6 @@
 package com.dino.core.ui.base
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -10,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.dino.core.ui.theme.LoremPicsumExampleTheme
 
-abstract class BaseComposeActivity : ComponentActivity() {
+abstract class BaseComposeActivity : BaseCoreActivity() {
     abstract val content: @Composable () -> Unit
 
     override fun onCreate(savedInstanceState: Bundle?) {

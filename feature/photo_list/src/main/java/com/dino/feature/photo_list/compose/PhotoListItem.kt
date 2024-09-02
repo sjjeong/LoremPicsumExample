@@ -14,10 +14,12 @@ import com.dino.feature.photo_list.model.PhotoModel
 @Composable
 fun PhotoListItem(
     item: PhotoModel,
+    onPhotoClick: (PhotoModel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Card(
-        modifier.padding(8.dp)
+        modifier = modifier.padding(8.dp),
+        onClick = { onPhotoClick(item) },
     ) {
         AsyncImage(
             modifier = Modifier

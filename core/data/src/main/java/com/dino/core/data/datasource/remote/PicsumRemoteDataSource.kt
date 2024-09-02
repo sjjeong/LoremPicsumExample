@@ -4,4 +4,5 @@ import com.dino.core.data.model.PicsumPhotoDto
 
 interface PicsumRemoteDataSource {
     suspend fun getPhotos(page: Int, limit: Int): Pair<List<PicsumPhotoDto>, Boolean>
+    suspend fun getPhoto(id: String): PicsumPhotoDto
 }

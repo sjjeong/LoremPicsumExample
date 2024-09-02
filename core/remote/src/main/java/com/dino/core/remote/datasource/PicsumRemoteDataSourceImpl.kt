@@ -19,4 +19,10 @@ class PicsumRemoteDataSourceImpl @Inject constructor(
             items to hasNext
         }
     }
+
+    override suspend fun getPhoto(id: String): PicsumPhotoDto {
+        return withContext(Dispatchers.IO) {
+            picsumApi.getPhoto(id = id).toDto()
+        }
+    }
 }

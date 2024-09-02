@@ -24,6 +24,7 @@ import com.dino.feature.photo_list.model.PhotoModel
 
 @Composable
 fun PhotoListScreen(
+    onPhotoClick: (PhotoModel) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: PhotoListViewModel = viewModel(),
 ) {
@@ -31,6 +32,7 @@ fun PhotoListScreen(
     PhotoListScreen(
         modifier = modifier,
         items = items,
+        onPhotoClick = onPhotoClick
     )
 }
 
@@ -38,6 +40,7 @@ fun PhotoListScreen(
 @Composable
 private fun PhotoListScreen(
     items: LazyPagingItems<PhotoModel>,
+    onPhotoClick: (PhotoModel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Scaffold(
@@ -68,7 +71,10 @@ private fun PhotoListScreen(
             ) { index ->
                 val item = items[index]
                 if (item != null) {
-                    PhotoListItem(item = item)
+                    PhotoListItem(
+                        item = item,
+                        onPhotoClick = onPhotoClick
+                    )
                 }
             }
 

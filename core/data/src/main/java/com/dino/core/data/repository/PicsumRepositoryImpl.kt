@@ -57,4 +57,8 @@ class PicsumRepositoryImpl @Inject constructor(
             }
         ).flow
     }
+
+    override suspend fun getPhoto(id: String): PicsumPhotoDto {
+        return remoteDataSource.getPhoto(id)
+    }
 }

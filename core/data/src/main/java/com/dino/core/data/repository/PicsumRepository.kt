@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface PicsumRepository {
     fun getPhotosPaging(): Flow<PagingData<PicsumPhotoDto>>
+    suspend fun getPhoto(id: String): PicsumPhotoDto
 }

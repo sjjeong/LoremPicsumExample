@@ -51,6 +51,7 @@ android {
 dependencies {
     implementation(project(":core:data"))
     implementation(project(":core:remote"))
+    implementation(project(":core:local"))
     implementation(project(":core:ui"))
 
     implementation(project(":feature:photo_list"))

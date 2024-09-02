@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.dino.core.data.datasource.local.PicsumLocalDataSource
 import com.dino.core.data.datasource.remote.PicsumRemoteDataSource
 import com.dino.core.data.model.PicsumPhotoDto
 import kotlinx.coroutines.flow.Flow
@@ -12,6 +13,7 @@ import javax.inject.Inject
 
 class PicsumRepositoryImpl @Inject constructor(
     private val remoteDataSource: PicsumRemoteDataSource,
+    private val localDataSource: PicsumLocalDataSource,
 ) : PicsumRepository {
 
     override fun getPhotosPaging(): Flow<PagingData<PicsumPhotoDto>> {
@@ -37,8 +39,10 @@ class PicsumRepositoryImpl @Inject constructor(
                                 limit = params.loadSize,
                             )
 
+                            val data = response.first
+                            localDataSource.savePhotos(data)
                             LoadResult.Page(
-                                data = response.first,
+                                data = data,
                                 prevKey = null,
                                 nextKey = if (response.second) {
                                     if (currentPage == 0) {
@@ -59,6 +63,13 @@ class PicsumRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getPhoto(id: String): PicsumPhotoDto {
-        return remoteDataSource.getPhoto(id)
+        val photo = localDataSource.getPhoto(id)
+        return if (photo == null) {
+            val newPhoto = remoteDataSource.getPhoto(id)
+            localDataSource.savePhoto(newPhoto)
+            newPhoto
+        } else {
+            photo
+        }
     }
 }

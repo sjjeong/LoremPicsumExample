@@ -1,4 +1,4 @@
-package com.dino.lorempicsumexample.base
+package com.dino.core.ui.base
 
 import androidx.lifecycle.ViewModel
 

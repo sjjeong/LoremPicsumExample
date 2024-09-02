@@ -1,4 +1,4 @@
-package com.dino.lorempicsumexample.base
+package com.dino.core.ui.base
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -8,7 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.dino.lorempicsumexample.ui.theme.LoremPicsumExampleTheme
+import com.dino.core.ui.theme.LoremPicsumExampleTheme
 
 abstract class BaseComposeActivity : ComponentActivity() {
     abstract val content: @Composable () -> Unit

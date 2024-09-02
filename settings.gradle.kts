@@ -23,3 +23,4 @@ rootProject.name = "LoremPicsumExample"
 include(":app")
 include(":core:data")
 include(":core:remote")
+include(":core:ui")

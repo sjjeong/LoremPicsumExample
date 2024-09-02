@@ -4,7 +4,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
-import com.dino.lorempicsumexample.base.BaseViewModel
+import com.dino.core.ui.base.BaseViewModel
 import com.dino.lorempicsumexample.feature.photo_list.model.PhotoModel
 import com.dino.lorempicsumexample.feature.photo_list.model.toUiModel
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -1,4 +1,4 @@
-package com.dino.lorempicsumexample.ui.theme
+package com.dino.core.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
